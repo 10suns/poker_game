@@ -9,7 +9,7 @@ class PokerHand
   end
 
   def output
-    return 'Invalid poker hand. Please draw again' unless validate_poker_hand
+    return 'Invalid poker hand. Please draw again' unless is_valid?
     basic_results = basic_possible_results
     if basic_results.has_key?('4C')
       return '4C'
@@ -21,10 +21,10 @@ class PokerHand
     '--'
   end
 
-  def validate_poker_hand
+  def is_valid?
     return false if @suits.count != @ranks.count && @suits.count != 5
     valid_suits = %w(S H D C)
-    valid_ranks = %w(2 3 4 5 6 7 8 9 J W K A)
+    valid_ranks = %w(2 3 4 5 6 7 8 9 J Q K A)
     @suits.each do |suit|
       return false unless valid_suits.include?(suit)
     end
