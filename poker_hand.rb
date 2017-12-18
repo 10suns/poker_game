@@ -11,12 +11,12 @@ class PokerHand
   def output
     return 'Invalid poker hand. Please draw again' unless is_valid?
     basic_results = basic_possible_results
-    if basic_results.has_key?('4C')
-      return '4C'
+    if basic_results.count == 1 && basic_results.values[0] == 1
+      return basic_results.keys[0]
     elsif basic_results.has_key?('3C') && basic_results.has_key?('1P')
       return 'FH'
     elsif basic_results.has_key?('1P')
-      return basic_results['1P'] > 1 ? '2P' : '1P'
+      return '2P'
     end
     '--'
   end
